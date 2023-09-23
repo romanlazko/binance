@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace App\Bots\cryptognal_bot\Database\Seeders;
 
 use App\Bots\cryptognal_bot\Models\Timeframe;
 use Illuminate\Database\Seeder;
