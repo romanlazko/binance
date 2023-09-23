@@ -4,9 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-// use App\Bots\cryptognal_bot\Database\Seeders\TimeframeSeeder;
-
-use App\Bots\cryptognal_bot\Database\Seeders\TimeframeSeeder;
+use App\Bots\cryptognal_bot\database\seeders\TimeframeSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
