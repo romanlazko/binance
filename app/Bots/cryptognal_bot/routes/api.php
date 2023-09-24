@@ -77,7 +77,7 @@ Route::middleware(['api'])->prefix('api/telegram/{bot}/spot')->group(function ()
                             $candlestick = end($candlesticks);
     
                             $text = implode("\n", [
-                                "*#SPOT_$symbol*: [{$timeframe->title}](https://binance.rlbot.ru/charts/future/{$symbol}_{$timeframe->title}.png?".rand(0,1000000).")",
+                                "*#SPOT_$symbol*: [{$timeframe->title}](https://binance.rlbot.ru/charts/spot/{$symbol}_{$timeframe->title}.png?".rand(0,1000000).")",
                                 "*Изменение цены: $changePercentage%*"."\n",
                                 "Текущая цена: *[$price USDT]*",
                                 "Цена $timeframe->title незад: *{$old_prices[$symbol]} USDT*"."\n",
