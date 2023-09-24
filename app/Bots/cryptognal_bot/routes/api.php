@@ -77,7 +77,7 @@ Route::middleware(['api'])->prefix('api/telegram/{bot}/spot')->group(function ()
                             $candlestick = end($candlesticks);
     
                             $text = implode("\n", [
-                                "*#SPOT_$symbol*: [{$timeframe->title}](https://7772-2a02-8308-a006-d600-6515-ecb0-7c26-a3d9.ngrok-free.app/$path?".rand(0,1000000).")",
+                                "*#SPOT_$symbol*: [{$timeframe->title}](".url($path."?".rand(0,1000000)).")",
                                 "*Изменение цены: $changePercentage%*"."\n",
                                 "Текущая цена: *[$price USDT]*",
                                 "Цена $timeframe->title незад: *{$old_prices[$symbol]} USDT*"."\n",
@@ -175,7 +175,7 @@ Route::middleware(['api'])->prefix('api/telegram/{bot}/future')->group(function 
                             $candlestick = end($candlesticks);
     
                             $text = implode("\n", [
-                                "*#FUTURE_$symbol*: [{$timeframe->title}](https://7772-2a02-8308-a006-d600-6515-ecb0-7c26-a3d9.ngrok-free.app/$path?".rand(0,1000000).")",
+                                "*#FUTURE_$symbol*: [{$timeframe->title}](".url($path."?".rand(0,1000000)).")",
                                 "*Изменение цены: $changePercentage%*"."\n",
                                 "Текущая цена: *[$price USDT]*",
                                 "Цена $timeframe->title незад: *{$old_prices[$symbol]} USDT*"."\n",
