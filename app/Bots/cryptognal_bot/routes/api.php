@@ -77,7 +77,7 @@ Route::middleware(['api'])->prefix('api/telegram/{bot}/spot')->group(function ()
                             $candlestick = end($candlesticks);
     
                             $text = implode("\n", [
-                                "*#SPOT_$symbol*: [{$timeframe->title}](".public_path($path)."?".rand(0,1000000).")",
+                                "*#SPOT_$symbol*: [{$timeframe->title}](".url($path)."?".rand(0,1000000).")",
                                 "*Изменение цены: $changePercentage%*"."\n",
                                 "Текущая цена: *[$price USDT]*",
                                 "Цена $timeframe->title незад: *{$old_prices[$symbol]} USDT*"."\n",
@@ -175,7 +175,7 @@ Route::middleware(['api'])->prefix('api/telegram/{bot}/future')->group(function 
                             $candlestick = end($candlesticks);
     
                             $text = implode("\n", [
-                                "*#FUTURE_$symbol*: [{$timeframe->title}](".public_path($path)."?".rand(0,1000000).")",
+                                "*#FUTURE_$symbol*: [{$timeframe->title}](".url($path)."?".rand(0,1000000).")",
                                 "*Изменение цены: $changePercentage%*"."\n",
                                 "Текущая цена: *[$price USDT]*",
                                 "Цена $timeframe->title незад: *{$old_prices[$symbol]} USDT*"."\n",
