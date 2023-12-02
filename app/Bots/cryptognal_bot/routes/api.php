@@ -15,6 +15,10 @@ use Romanlazko\Telegram\Exceptions\TelegramException;
 Route::middleware(['api'])->prefix('api/telegram/{bot}/spot')->group(function () {
     Route::get('/percent', function(Telegram $telegram, ChartService $chartService){
         try {
+            $hourAgo = now()->subHour();
+            
+            SpotPrice::where('created_at', '<', $hourAgo)->delete();
+
             $spot = new Binance("Lf6z1ErUmCgVBTtKWPKZCZyhYhHZjWSMFIYReLZqGuqRq7gZklUNyw4y1feY3Jz6","ZFhVhmz6uOusihdH0MR7KQYaZ1fJUSwxCRFXDwgmEyn8Yr9vKOnc5b22ivH6gE38");
     
             $new_prices = $spot->system()->getTickerPrice();
@@ -113,6 +117,10 @@ Route::middleware(['api'])->prefix('api/telegram/{bot}/spot')->group(function ()
 Route::middleware(['api'])->prefix('api/telegram/{bot}/future')->group(function () {
     Route::get('/percent', function(Telegram $telegram, ChartService $chartService){
         try {
+            $hourAgo = now()->subHour();
+            
+            FuturePrice::where('created_at', '<', $hourAgo)->delete();
+
             $future = new BinanceFuture("Lf6z1ErUmCgVBTtKWPKZCZyhYhHZjWSMFIYReLZqGuqRq7gZklUNyw4y1feY3Jz6","ZFhVhmz6uOusihdH0MR7KQYaZ1fJUSwxCRFXDwgmEyn8Yr9vKOnc5b22ivH6gE38");
     
             $new_prices = $future->market()->getTickerPrice();
